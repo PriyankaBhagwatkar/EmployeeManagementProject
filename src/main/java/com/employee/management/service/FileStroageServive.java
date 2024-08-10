@@ -6,11 +6,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.employee.management.model.FileMetData;
 import com.employee.management.repository.FileMetDataRepository;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Service
 public class FileStroageServive {
@@ -50,4 +52,9 @@ public class FileStroageServive {
         Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
         return filePath.toFile();
     }
+    
+    public List<FileMetData> getAllFiles() {
+        return fileMetdataRepository.findAll();
+    }
 }
+
